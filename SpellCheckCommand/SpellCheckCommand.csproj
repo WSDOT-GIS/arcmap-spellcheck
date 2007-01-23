@@ -1,0 +1,193 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{BC6DEC8C-D132-487E-A4E5-60E676487C35}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "SpellCheckCommand"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = 'copy "$(ProjectDir)SpellcheckTest.mxd" "$(TargetDir)"'
+                RootNamespace = "ArcMapSpellCheck"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = "bin\Debug\SpellCheckerCommand.xml"
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "true"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = "bin\Release\SpellCheckerCommand.xml"
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "true"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.Utility"
+                    AssemblyName = "ESRI.ArcGIS.Utility"
+                    HintPath = "..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.Utility.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.SystemUI"
+                    AssemblyName = "ESRI.ArcGIS.SystemUI"
+                    HintPath = "..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.SystemUI.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.ControlCommands"
+                    AssemblyName = "ESRI.ArcGIS.ControlCommands"
+                    HintPath = "..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.ControlCommands.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.Framework"
+                    AssemblyName = "ESRI.ArcGIS.Framework"
+                    HintPath = "..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.Framework.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.System"
+                    AssemblyName = "ESRI.ArcGIS.System"
+                    HintPath = "..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.System.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "System.Management"
+                    AssemblyName = "System.Management"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Management.dll"
+                />
+                <Reference
+                    Name = "System.Configuration.Install"
+                    AssemblyName = "System.Configuration.Install"
+                    HintPath = "..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Configuration.Install.dll"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.ArcMapUI"
+                    AssemblyName = "ESRI.ArcGIS.ArcMapUI"
+                    HintPath = "..\..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.ArcMapUI.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.Geometry"
+                    AssemblyName = "ESRI.ArcGIS.Geometry"
+                    HintPath = "..\..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.Geometry.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.Display"
+                    AssemblyName = "ESRI.ArcGIS.Display"
+                    HintPath = "..\..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.Display.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "..\..\..\..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "ESRI.ArcGIS.Carto"
+                    AssemblyName = "ESRI.ArcGIS.Carto"
+                    HintPath = "..\..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.Carto.dll"
+                    AssemblyFolderKey = "hklm\dn\arcgis desktop"
+                />
+                <Reference
+                    Name = "SpellChecker"
+                    Project = "{38FCA77E-74FB-45AD-ACD0-8BF32E2BA379}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "InstallerConfig.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "SpellCheck.png"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SpellCheckCommand.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TableOfContentsItem.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

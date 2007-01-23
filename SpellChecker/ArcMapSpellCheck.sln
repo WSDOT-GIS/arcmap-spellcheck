@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpellCheckCommand", "..\SpellCheckCommand\SpellCheckCommand.csproj", "{BC6DEC8C-D132-487E-A4E5-60E676487C35}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpellChecker", "SpellChecker.csproj", "{38FCA77E-74FB-45AD-ACD0-8BF32E2BA379}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SpellCheckSetup", "..\SpellCheckSetup\SpellCheckSetup.vdproj", "{1B51F606-A10F-41B6-8AF6-A645032F313F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{BC6DEC8C-D132-487E-A4E5-60E676487C35}.Debug.ActiveCfg = Debug|.NET
+		{BC6DEC8C-D132-487E-A4E5-60E676487C35}.Debug.Build.0 = Debug|.NET
+		{BC6DEC8C-D132-487E-A4E5-60E676487C35}.Release.ActiveCfg = Release|.NET
+		{BC6DEC8C-D132-487E-A4E5-60E676487C35}.Release.Build.0 = Release|.NET
+		{38FCA77E-74FB-45AD-ACD0-8BF32E2BA379}.Debug.ActiveCfg = Debug|.NET
+		{38FCA77E-74FB-45AD-ACD0-8BF32E2BA379}.Debug.Build.0 = Debug|.NET
+		{38FCA77E-74FB-45AD-ACD0-8BF32E2BA379}.Release.ActiveCfg = Release|.NET
+		{38FCA77E-74FB-45AD-ACD0-8BF32E2BA379}.Release.Build.0 = Release|.NET
+		{1B51F606-A10F-41B6-8AF6-A645032F313F}.Debug.ActiveCfg = Debug
+		{1B51F606-A10F-41B6-8AF6-A645032F313F}.Release.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
