@@ -70,8 +70,13 @@ namespace ArcMapSpellCheck {
 					wordApp = null;
 					wordHasBeenClosed = true;
 				}
-			
-				// Display the number of spell-checked text elements and TOC items.
+
+                // Refresh the contents.
+                document.CurrentContentsView.Refresh(null);
+                // Refresh text on map.
+                //document.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, Type.Missing, Type.Missing);
+                document.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
+                // Display the number of spell-checked text elements and TOC items.
 				StringBuilder message = new StringBuilder();
 				message.AppendFormat("Text elements: {0}{1}", spellCheckedTextCount, Environment.NewLine);
 				message.AppendFormat("Table of contents elements: {0}", spellCheckedTocCount);

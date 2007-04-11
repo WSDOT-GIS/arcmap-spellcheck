@@ -5,10 +5,10 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using ESRI.ArcGIS.ArcMapUI;
-using ESRI.ArcGIS.ControlCommands;
+using ESRI.ArcGIS.Controls;
 using ESRI.ArcGIS.Framework;
-using ESRI.ArcGIS.Utility.BaseClasses;
-using ESRI.ArcGIS.Utility.CATIDs;
+using ESRI.ArcGIS.ADF.BaseClasses;
+using ESRI.ArcGIS.ADF.CATIDs;
 
 namespace ArcMapSpellCheck {
 	/// <summary>
@@ -32,7 +32,7 @@ namespace ArcMapSpellCheck {
 	///			<para>This tool was tested with Office 2000 (i.e., Word 9).</para>
 	///		</note>
 	/// </remarks>
-	[Guid("c50838dc-0292-4b18-bc1a-2dc0407e234e"), ComVisible(true)]
+	[Guid("c50838dc-0292-4b18-bc1a-2dc0407e234e"), ComVisible(true), CLSCompliant(false)]
 	public sealed class SpellCheckCommand: BaseCommand {
 		//// This Regex pattern matches formatting tags that are used in text elements (e.g., <tag></tag> or <tag/>).
 		//private const string xmlTagPattern = @"\<(?<slash>/)?[a-zA-Z]+(?!\k<slash>)/?\>";
