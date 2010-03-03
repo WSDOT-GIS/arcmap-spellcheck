@@ -1,0 +1,20 @@
+﻿<ESRI.Configuration xmlns="http://schemas.esri.com/Desktop/AddIns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Spell-Check</Name>
+  <AddInID>{7d90a5f5-bfe3-483a-be83-21fa5be6f97d}</AddInID>
+  <Description>Provides spell-check capability in ArcMap.</Description>
+  <Version>1.0</Version>
+  <Image>Images\SpellCheckAddIn.png</Image>
+  <Author>Jeff Jacobson</Author>
+  <Company>WSDOT</Company>
+  <Date>3/3/2010</Date>
+  <Targets>
+    <Target name="Desktop" version="9.4" />
+  </Targets>
+  <AddIn language="CLR" library="SpellCheckAddIn.dll" namespace="SpellCheckAddIn">
+    <ArcMap>
+      <Commands>
+        <Button id="WSDOT_SpellCheckAddIn_SpellCheckButton" class="SpellCheckButton" message="Checks the spelling of text elements in an ArcMap Document." caption="SpellCheck" tip="Checks the spelling of text elements in an ArcMap Document." category="Add-In Controls" image="Images\SpellCheckButton.png" />
+      </Commands>
+    </ArcMap>
+  </AddIn>
+</ESRI.Configuration>
