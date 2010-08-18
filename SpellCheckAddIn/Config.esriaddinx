@@ -8,7 +8,7 @@
   <Company>WSDOT</Company>
   <Date>3/3/2010</Date>
   <Targets>
-    <Target name="Desktop" version="9.4" />
+    <Target name="Desktop" version="10.0" />
   </Targets>
   <AddIn language="CLR" library="SpellCheckAddIn.dll" namespace="SpellCheckAddIn">
     <ArcMap>
