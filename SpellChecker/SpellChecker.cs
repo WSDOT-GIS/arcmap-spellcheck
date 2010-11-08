@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.ArcMapUI;
-using Word;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace ArcMapSpellCheck {
 	/// <summary>
@@ -54,11 +54,11 @@ namespace ArcMapSpellCheck {
 				int spellCheckedTocCount = 0;
 				bool wordHasBeenClosed = false;
 
-				object doNotSaveChanges = WdSaveOptions.wdDoNotSaveChanges;
+				object doNotSaveChanges = Word.WdSaveOptions.wdDoNotSaveChanges;
 				object skipped = Missing.Value;
 
 				// Activate Word
-				Word.Application wordApp = new ApplicationClass();
+                Word.Application wordApp = new Word.ApplicationClass();
 				// Spellcheck the MXD's text elements.
 				spellCheckedTextCount = CheckSpellingOfTextElements(document, wordApp, ref wordHasBeenClosed);
 				// Spellcheck the names of the maps and layers in the MXD.
@@ -100,7 +100,8 @@ namespace ArcMapSpellCheck {
 		///			<item><description><paramref name="wordHasBeenClosed"/> is <see langword="true"/>.</description></item>
 		///		</list>
 		///	</returns>
-		private static int CheckSpellingOfTocItemNames(IMaps maps, Word.Application wordApp, ref bool wordHasBeenClosed) {
+        private static int CheckSpellingOfTocItemNames(IMaps maps, Word.Application wordApp, ref bool wordHasBeenClosed)
+        {
 			int spellcheckedItems = 0;
 			// Exit if there are no maps or if maps is null.
 			if (maps == null || maps.Count == 0 || wordApp == null || wordHasBeenClosed) 
@@ -117,20 +118,21 @@ namespace ArcMapSpellCheck {
 			if (tocItems == null || tocItems.Length == 0) return spellcheckedItems;
 
 			//Word.Application wordApp = new Word.ApplicationClass();
-			object doNotSaveChanges = WdSaveOptions.wdDoNotSaveChanges;
+			object doNotSaveChanges = Word.WdSaveOptions.wdDoNotSaveChanges;
 			// Since C# does not permit optional parameters an instance of Missing must be used in instances where these 
 			// optional parameters were skipped in the VB version of the code.
 			object skipped = Missing.Value;
 				
 			string currentText;
 
-			Document wdDoc = null;
+			Word.Document wdDoc = null;
 			foreach (TableOfContentsItem tocItem in tocItems) {
 				currentText = tocItem.Name;
 				
 				wdDoc = wordApp.Documents.Add(ref skipped, ref skipped, ref skipped, ref skipped);
 				wordApp.Selection.Text = currentText;
-				int dialogReturn = wordApp.Dialogs.Item(WdWordDialog.wdDialogToolsSpellingAndGrammar).Show(ref skipped);
+                Word.Dialog spellDialog = wordApp.Dialogs[Word.WdWordDialog.wdDialogToolsSpellingAndGrammar];
+                int dialogReturn = spellDialog.Show(ref skipped);
 				// If the cancel button was clicked on the spell check dialog...
 				if (dialogReturn == cancel) {
 					// Quit word if the spell check was canceled.
@@ -170,7 +172,8 @@ namespace ArcMapSpellCheck {
         ///			<item><description><paramref name="wordHasBeenClosed"/> is <see langword="true"/>.</description></item>
         ///		</list>
         ///	</returns>
-        private static int CheckSpellingOfTextElements(IMxDocument mxDoc, Word.Application wordApp, ref bool wordHasBeenClosed) {
+        private static int CheckSpellingOfTextElements(IMxDocument mxDoc, Word.Application wordApp, ref bool wordHasBeenClosed)
+        {
             int checkedElementCount = 0;
             if (wordApp == null || wordHasBeenClosed) return checkedElementCount;
 
@@ -187,7 +190,7 @@ namespace ArcMapSpellCheck {
             IElement element;
             ITextElement textElement;
             //Word.Application wordApp = new Word.ApplicationClass();
-            object doNotSaveChanges = WdSaveOptions.wdDoNotSaveChanges;
+            object doNotSaveChanges = Word.WdSaveOptions.wdDoNotSaveChanges;
             // Since C# does not permit optional parameters an instance of Missing must be used in instances where these 
             // optional parameters were skipped in the VB version of the code.
             object skipped = Missing.Value;
@@ -204,7 +207,7 @@ namespace ArcMapSpellCheck {
                 gContainer.Reset();
                 element = gContainer.Next();
 
-                Document wdDoc;
+                Word.Document wdDoc;
 
                 // Loop through ALL elements and (if they are text elements) check their spelling.
                 while (element != null) {
@@ -228,7 +231,7 @@ namespace ArcMapSpellCheck {
                     wordApp.Selection.Text = currentText;
 
                     // Create and show the spelling and grammar check dialog.
-                    Dialog spellDialog = wordApp.Dialogs.Item(WdWordDialog.wdDialogToolsSpellingAndGrammar);
+                    Word.Dialog spellDialog = wordApp.Dialogs[Word.WdWordDialog.wdDialogToolsSpellingAndGrammar];
                     int dialogReturn = spellDialog.Show(ref skipped);
 
 

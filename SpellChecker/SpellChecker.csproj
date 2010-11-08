@@ -68,6 +68,7 @@
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -118,15 +119,14 @@
       <HintPath>..\..\..\..\..\..\..\Program Files\ArcGIS\DotNet\ESRI.ArcGIS.System.dll</HintPath>
       <AssemblyFolderKey>hklm\dn\arcgis desktop</AssemblyFolderKey>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
     <Reference Include="System.Windows.Forms">
       <Name>System.Windows.Forms</Name>
-    </Reference>
-    <Reference Include="Word">
-      <Name>Word</Name>
-      <HintPath>InteropAssemblies\Word.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
