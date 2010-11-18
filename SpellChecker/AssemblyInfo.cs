@@ -10,26 +10,8 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyTitle("ArcMap Spellchecker")]
 [assembly: AssemblyDescription("Allows users to spellcheck text elements in an ArcMap document using Microsoft Word's spellchecker.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Washington State Department of Transportation")]
 [assembly: AssemblyProduct("ArcMap Spellchecker")]
-[assembly: AssemblyCopyright("© WSDOT 2010")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]		
 
-//
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Revision and Build Numbers 
-// by using the '*' as shown below:
-
-[assembly: AssemblyVersion("10.0.1.0")]
 
 [assembly: CLSCompliant(true)]
 [assembly: ComVisible(false)]
-[assembly: AssemblyFileVersionAttribute("10.0.1.0")]
