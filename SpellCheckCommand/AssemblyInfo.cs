@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("ArcMap Spellchecker")]
+[assembly: AssemblyTitle("ArcMap Spellchecker Command Button")]
 [assembly: AssemblyDescription("Allows users to spellcheck text elements in an ArcMap document using Microsoft Word's spellchecker.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Washington State Department of Transportation")]
@@ -28,7 +28,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.0.0")]
+[assembly: AssemblyVersion("1.0.1")]
 
 [assembly: CLSCompliant(true)]
 [assembly: ComVisible(false)]

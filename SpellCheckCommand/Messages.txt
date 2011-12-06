@@ -1,0 +1,7 @@
+# Installation messages
+InstallErrorMessage = COM registration failed.  Some or all of the application classes are not properly registered in the ESRI component categories."
+InstallErrorTitle = Install Error
+
+# Uninstall messages
+UninstallErrorMessage = COM unregistration failed.  Some or all of the application classes are not properly removed from the ESRI component categories.
+UninstallErrorTitle = Uninstall Error
