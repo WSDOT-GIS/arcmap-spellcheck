@@ -8,13 +8,20 @@
   <Company>WSDOT</Company>
   <Date>3/3/2010</Date>
   <Targets>
-    <Target name="Desktop" version="10.0" />
+    <Target name="Desktop" version="10.4" />
   </Targets>
   <AddIn language="CLR" library="SpellCheckAddIn.dll" namespace="SpellCheckAddIn">
     <ArcMap>
       <Commands>
         <Button id="WSDOT_SpellCheckAddIn_SpellCheckButton" class="SpellCheckButton" message="Checks the spelling of text elements in an ArcMap Document." caption="SpellCheck" tip="Checks the spelling of text elements in an ArcMap Document." category="Add-In Controls" image="Images\SpellCheckButton.png" />
       </Commands>
+      <Toolbars>
+        <Toolbar id="WSDOT_SpellCheckAddIn_Toolbar" caption="Spellcheck" showInitially="true">
+          <Items>
+            <Button refID="WSDOT_SpellCheckAddIn_SpellCheckButton" />
+          </Items>
+        </Toolbar>
+      </Toolbars>
     </ArcMap>
   </AddIn>
 </ESRI.Configuration>

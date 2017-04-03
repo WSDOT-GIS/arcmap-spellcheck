@@ -20,7 +20,10 @@ namespace SpellCheckAddIn
             //
             ////ArcMap.Application.CurrentTool = null;
             IMxDocument doc = ArcMap.Application.Document as IMxDocument;
-            Spellchecker.CheckDocument(doc);
+            using (var spellchecker = new Spellchecker())
+            {
+                spellchecker.CheckDocument(doc);
+            }
         }
         protected override void OnUpdate()
         {
