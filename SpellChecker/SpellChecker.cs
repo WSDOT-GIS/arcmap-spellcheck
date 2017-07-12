@@ -220,14 +220,11 @@ namespace ArcMapSpellCheck {
         /// Checks the spelling of the names of all maps and layers in the table of contents.
         /// </summary>
         /// <param name="maps">An <see cref="IMaps"/> collection of maps.</param>
-        /// <param name="_WordApp">A <see cref="Word.Application"/> object.</param>
-        /// <param name="wordHasBeenClosed">A <see cref="bool"/> indicating if <paramref name="_WordApp"/> has been closed.</param>
         /// <returns>
         ///		The number of items that were spellchecked.  Zero will be returned under the following contiditions:
         ///		<list type="bullet">
         ///			<item><description>No mispelled items were detected.</description></item>
-        ///			<item><description>Either <paramref name="maps"/> or <paramref name="_WordApp"/> were <see langword="null"/>.</description></item>
-        ///			<item><description><paramref name="wordHasBeenClosed"/> is <see langword="true"/>.</description></item>
+        ///			<item><description>Either <paramref name="maps"/>.</description></item>
         ///		</list>
         ///	</returns>
         private int CheckSpellingOfTocItemNames(IMaps maps) {
@@ -256,14 +253,10 @@ namespace ArcMapSpellCheck {
         /// Checks the spelling of the text elements in an ArcMap document.
         /// </summary>
         /// <param name="mxDoc">An <see cref="IMxDocument">ArcMap docmuent</see>.</param>
-        /// <param name="_WordApp">A <see cref="Word.Application"/> object.</param>
-        /// <param name="wordHasBeenClosed">A <see cref="bool"/> indicating if <paramref name="_WordApp"/> has been closed.</param>
         /// <returns>
         ///		The number of text elements that were spellchecked.  Zero will be returned under the following contiditions:
         ///		<list type="bullet">
         ///			<item><description>No mispelled items were detected.</description></item>
-        ///			<item><description>Either <paramref name="maps"/> or <paramref name="_WordApp"/> were <see langword="null"/>.</description></item>
-        ///			<item><description><paramref name="wordHasBeenClosed"/> is <see langword="true"/>.</description></item>
         ///		</list>
         ///	</returns>
         private int CheckSpellingOfTextElements(IMxDocument mxDoc) {
