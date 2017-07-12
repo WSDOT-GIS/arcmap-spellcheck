@@ -19,7 +19,7 @@ namespace ArcMapSpellCheck {
     ///		<list type="bullet">
     ///			<item><description>Written in C# instead of VBA.</description></item>
     ///			<item><description>Is implemented as an ArcGIS command instead of a VBA macro.</description></item>
-    ///			<item><description>This version of the tool checks the spelling of all text elements as well as the names 
+    ///			<item><description>This version of the tool checks the spelling of all text elements as well as the names
     ///			of all maps and layers, in the current ArcMap document.
     ///			The original version would only check a single selected text element, and would crash
     ///			if no text elements were selected.</description></item>
@@ -46,7 +46,7 @@ namespace ArcMapSpellCheck {
             ActivateArcMap();
         }
 
-        // The following directive disables the compiler's warning: "Ambiguity between method 'method' and non-method 'non-method'. Using method group." 
+        // The following directive disables the compiler's warning: "Ambiguity between method 'method' and non-method 'non-method'. Using method group."
 #pragma warning disable 0467
         /// <summary>
         /// Checks the spelling of the given <see cref="IMxDocument"/>.
@@ -72,11 +72,11 @@ namespace ArcMapSpellCheck {
 
                 // Refresh the contents.
                 document.CurrentContentsView.Refresh(null);
-                
+
                 // Refresh text on map.
                 document.ActiveView.PartialRefresh(esriViewDrawPhase.esriViewGraphics, null, null);
-                
-                
+
+
                 // Display the number of spell-checked text elements and TOC items.
                 StringBuilder message = new StringBuilder();
                 message.AppendFormat("Text elements: {0}{1}", spellCheckedTextCount, Environment.NewLine);
@@ -208,7 +208,7 @@ namespace ArcMapSpellCheck {
         }
 
         #endregion
-        
+
 
         private Word.Application _WordApp;
         private Word.Document _WordDoc;
@@ -232,7 +232,7 @@ namespace ArcMapSpellCheck {
         ///	</returns>
         private int CheckSpellingOfTocItemNames(IMaps maps) {
             int spellcheckedItems = 0;
-            
+
             if (maps == null || maps.Count == 0 || _CancelSpellChecking)
                 return spellcheckedItems;
 
@@ -272,11 +272,11 @@ namespace ArcMapSpellCheck {
             if (_CancelSpellChecking)
                 return checkedElementCount;
 
-            // Cast both the PageLayout and FocusMap (Layout view and Data view) to IGraphicsContainers 
+            // Cast both the PageLayout and FocusMap (Layout view and Data view) to IGraphicsContainers
             // and put them into an array.
-            IGraphicsContainer[] gContainers = { 
-												   mxDoc.PageLayout as IGraphicsContainer, 
-												   mxDoc.FocusMap as IGraphicsContainer 
+            IGraphicsContainer[] gContainers = {
+												   mxDoc.PageLayout as IGraphicsContainer,
+												   mxDoc.FocusMap as IGraphicsContainer
 											   };
 
             IElement element;
@@ -334,7 +334,7 @@ namespace ArcMapSpellCheck {
             int dialogReturn = spellDialog.Show(ref _Missing);
             _CancelSpellChecking = (dialogReturn == 0 || dialogReturn == -2);
 
-            
+
             _WordDoc.SelectAllEditableRanges(ref _Missing);
             return _WordApp.Selection.Text;
         }
@@ -356,10 +356,10 @@ namespace ArcMapSpellCheck {
         private static extern bool BringWindowToTop(IntPtr hWnd);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr FindWindow(string ClassName, string WindowText);
+        private static extern IntPtr FindWindow(string ClassName, string WindowText);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
-        public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
+        private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
 
     }
