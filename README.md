@@ -1,7 +1,17 @@
 Spell Check for ArcMap
 ======================
 
-Requires Microsoft Word to be installed.
+Requirements
+------------
+
+* ArcMap 10.4.1 or higher
+* User must have Microsoft Word installed. (Tested with Word 2016. Other versions may or may not work.)
+
+### Development Requirements ###
+
+* Visual Studio 2015
+* Visual Studio 2013 Isolated Shell
+* ArcObjects .NET SDK
 
 The idea for this addin was based on a Visual Basic for Applications (VBA) code example by Esri: [How to spell check text elements in ArcMap].
 
