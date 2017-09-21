@@ -6,9 +6,10 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using ESRI.ArcGIS.Carto;
 using ESRI.ArcGIS.ArcMapUI;
-using Word = Microsoft.Office.Interop.Word;
+//using Word = Microsoft.Office.Interop.Word;
 
-namespace ArcMapSpellCheck {
+namespace ArcMapSpellCheck
+{
     /// <summary>
     /// Checks the spelling of the text in an ArcMap document.
     /// </summary>
@@ -31,19 +32,21 @@ namespace ArcMapSpellCheck {
     ///		</note>
     /// </remarks>
     [ComVisible(true)]
-    public sealed class Spellchecker : IDisposable {
+    public sealed class Spellchecker : IDisposable
+    {
         //// This Regex pattern matches formatting tags that are used in text elements (e.g., <tag></tag> or <tag/>).
         //private const string xmlTagPattern = @"\<(?<slash>/)?[a-zA-Z]+(?!\k<slash>)/?\>";
 
         /// <summary>Creates a new instance of <see cref="Spellchecker"/>.</summary>
-        public Spellchecker() {
+        public Spellchecker()
+        {
             // Activate Word
-            _WordApp = new Word.ApplicationClass();
-            _WordDoc = _WordApp.Documents.Add(ref _Missing, ref _Missing, ref _Missing, ref _Missing);
+            //_WordApp = new Word.ApplicationClass();
+            //_WordDoc = _WordApp.Documents.Add(ref _Missing, ref _Missing, ref _Missing, ref _Missing);
 
-            // On Windows 7, starting Word causes the ArcMap window to be sent behind other open windows.
-            // Then, when the SpellCheck dialog was shown, it would also be hidden behind the other windows.
-            ActivateArcMap();
+            //// On Windows 7, starting Word causes the ArcMap window to be sent behind other open windows.
+            //// Then, when the SpellCheck dialog was shown, it would also be hidden behind the other windows.
+            //ActivateArcMap();
         }
 
         // The following directive disables the compiler's warning: "Ambiguity between method 'method' and non-method 'non-method'. Using method group."
@@ -53,13 +56,16 @@ namespace ArcMapSpellCheck {
         /// </summary>
         /// <param name="document">An ArcMap document.</param>
         [CLSCompliant(false), ComVisible(false)]
-        public void CheckDocument(IMxDocument document) {
+        public void CheckDocument(IMxDocument document)
+        {
             ThrowIfDisposed();
 
-            if (document == null) {
+            if (document == null)
+            {
                 throw new ArgumentNullException("document");
             }
-            try {
+            try
+            {
                 _CancelSpellChecking = false;
                 int spellCheckedTextCount = 0;
                 int spellCheckedTocCount = 0;
@@ -83,7 +89,8 @@ namespace ArcMapSpellCheck {
                 message.AppendFormat("Table of contents elements: {0}", spellCheckedTocCount);
                 ShowOKMessageBox(message.ToString(), "Information", MessageBoxIcon.Information);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 ShowOKMessageBox(ex.ToString(), "Error", MessageBoxIcon.Error);
             }
         }
@@ -96,7 +103,8 @@ namespace ArcMapSpellCheck {
         /// <summary>
         /// Releases all resources used by the object.
         /// </summary>
-        public void Dispose() {
+        public void Dispose()
+        {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
@@ -118,27 +126,32 @@ namespace ArcMapSpellCheck {
         /// <summary>
         /// This method should be used to perform the actual clean up of all appropriate resources.
         /// </summary>
-        private void Dispose(bool disposing) {
-            if (!IsDisposed) {
+        private void Dispose(bool disposing)
+        {
+            if (!IsDisposed)
+            {
                 _IsDisposing = true;
                 OnDisposing(EventArgs.Empty);
 
                 // Release unmanaged resources:  ReleaseBuffer(unmanagedBuffer);
-                if (_WordDoc != null) {
+                if (_WordDoc != null)
+                {
                     // Close the current document
                     object doNotSaveChanges = Word.WdSaveOptions.wdDoNotSaveChanges;
                     _WordDoc.Close(ref doNotSaveChanges, ref _Missing, ref _Missing);
                     _WordDoc = null;
                 }
 
-                if (_WordApp != null) {
+                if (_WordApp != null)
+                {
                     object doNotSaveChanges = Word.WdSaveOptions.wdDoNotSaveChanges;
                     object skipped = Missing.Value;
                     _WordApp.Quit(ref doNotSaveChanges, ref skipped, ref skipped);
                     _WordApp = null;
                 }
 
-                if (disposing) {
+                if (disposing)
+                {
                     // TODO: Release managed resources:  if(managedObject != null) managedObject.Dispose();
 
                 }
@@ -155,9 +168,11 @@ namespace ArcMapSpellCheck {
         /// Raised when this instance completes disposal.
         /// </summary>
         public event EventHandler Disposed;
-        private void OnDisposed(EventArgs e) {
+        private void OnDisposed(EventArgs e)
+        {
             EventHandler handler;
-            lock (EventLock) {
+            lock (EventLock)
+            {
                 handler = Disposed;
             }
             if (handler != null)
@@ -168,9 +183,11 @@ namespace ArcMapSpellCheck {
         /// Raised when this instance begins disposal.
         /// </summary>
         public event EventHandler Disposing;
-        private void OnDisposing(EventArgs e) {
+        private void OnDisposing(EventArgs e)
+        {
             EventHandler handler;
-            lock (EventLock) {
+            lock (EventLock)
+            {
                 handler = Disposing;
             }
             if (handler != null)
@@ -182,7 +199,8 @@ namespace ArcMapSpellCheck {
         /// Call this method at the beginning of each property or method that
         /// cannot be used when this object has been disposed.
         /// </summary>
-        private void ThrowIfDisposed() {
+        private void ThrowIfDisposed()
+        {
             if (!IsDisposed)
                 return;
 
@@ -191,7 +209,8 @@ namespace ArcMapSpellCheck {
             string memberName = frame.GetMethod().Name;
             string memberType = "method";
 
-            if ((memberName.Length >= 4) && (memberName.Substring(1, 3) == "et_")) {
+            if ((memberName.Length >= 4) && (memberName.Substring(1, 3) == "et_"))
+            {
                 memberName = memberName.Substring(4);
                 memberType = "property";
             }
@@ -203,7 +222,8 @@ namespace ArcMapSpellCheck {
         /// This finalizer is called by the garbage collector automatically.  If the user of this class
         /// fails to call the Dispose method explicitly, this method will call it to free unmanaged resources.
         /// </summary>
-        ~Spellchecker() {
+        ~Spellchecker()
+        {
             Dispose(false);
         }
 
@@ -227,7 +247,8 @@ namespace ArcMapSpellCheck {
         ///			<item><description>Either <paramref name="maps"/>.</description></item>
         ///		</list>
         ///	</returns>
-        private int CheckSpellingOfTocItemNames(IMaps maps) {
+        private int CheckSpellingOfTocItemNames(IMaps maps)
+        {
             int spellcheckedItems = 0;
 
             if (maps == null || maps.Count == 0 || _CancelSpellChecking)
@@ -237,7 +258,8 @@ namespace ArcMapSpellCheck {
             if (tocItems == null || tocItems.Length == 0)
                 return spellcheckedItems;
 
-            foreach (TableOfContentsItem tocItem in tocItems) {
+            foreach (TableOfContentsItem tocItem in tocItems)
+            {
                 if (_CancelSpellChecking)
                     break;
 
@@ -259,7 +281,8 @@ namespace ArcMapSpellCheck {
         ///			<item><description>No mispelled items were detected.</description></item>
         ///		</list>
         ///	</returns>
-        private int CheckSpellingOfTextElements(IMxDocument mxDoc) {
+        private int CheckSpellingOfTextElements(IMxDocument mxDoc)
+        {
             int checkedElementCount = 0;
 
             if (_CancelSpellChecking)
@@ -268,15 +291,16 @@ namespace ArcMapSpellCheck {
             // Cast both the PageLayout and FocusMap (Layout view and Data view) to IGraphicsContainers
             // and put them into an array.
             IGraphicsContainer[] gContainers = {
-												   mxDoc.PageLayout as IGraphicsContainer,
-												   mxDoc.FocusMap as IGraphicsContainer
-											   };
+                                                   mxDoc.PageLayout as IGraphicsContainer,
+                                                   mxDoc.FocusMap as IGraphicsContainer
+                                               };
 
             IElement element;
             ITextElement textElement;
 
             // Run the MS Word spell check on the text elements in both the Layout and Data views.
-            foreach (IGraphicsContainer gContainer in gContainers) {
+            foreach (IGraphicsContainer gContainer in gContainers)
+            {
                 if (_CancelSpellChecking)
                     break;
 
@@ -287,7 +311,8 @@ namespace ArcMapSpellCheck {
                 element = gContainer.Next();
 
                 // Loop through ALL elements and (if they are text elements) check their spelling.
-                while (element != null) {
+                while (element != null)
+                {
                     if (_CancelSpellChecking)
                         break;
 
@@ -295,7 +320,8 @@ namespace ArcMapSpellCheck {
                     textElement = element as ITextElement;
 
                     // If the current element is not a text element, go to the next element.
-                    if (textElement == null) {
+                    if (textElement == null)
+                    {
                         element = gContainer.Next();
                         continue;
                     }
@@ -312,24 +338,26 @@ namespace ArcMapSpellCheck {
             return checkedElementCount;
         }
 
-        private string CheckText(string text) {
+        private string CheckText(string text)
+        {
             _WordDoc.SelectAllEditableRanges(ref _Missing);
             _WordApp.Selection.Text = text;
 
+            // TODO: Replace MS Word code with custom UI.
 
-            Word.Dialog spellDialog = _WordApp.Dialogs[Word.WdWordDialog.wdDialogToolsSpellingAndGrammar];
+            //Word.Dialog spellDialog = _WordApp.Dialogs[Word.WdWordDialog.wdDialogToolsSpellingAndGrammar];
 
-            // Keep the dialog in front of the current process (ArcMap)
-            var hwndSpellDialog = FindWindow("OpusApp", null);
-            SetParent(hwndSpellDialog, System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle);
-
-
-            int dialogReturn = spellDialog.Show(ref _Missing);
-            _CancelSpellChecking = (dialogReturn == 0 || dialogReturn == -2);
+            //// Keep the dialog in front of the current process (ArcMap)
+            //var hwndSpellDialog = FindWindow("OpusApp", null);
+            //SetParent(hwndSpellDialog, System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle);
 
 
-            _WordDoc.SelectAllEditableRanges(ref _Missing);
-            return _WordApp.Selection.Text;
+            //int dialogReturn = spellDialog.Show(ref _Missing);
+            //_CancelSpellChecking = (dialogReturn == 0 || dialogReturn == -2);
+
+
+            //_WordDoc.SelectAllEditableRanges(ref _Missing);
+            //return _WordApp.Selection.Text;
         }
 #pragma warning restore 0467
 
@@ -337,11 +365,13 @@ namespace ArcMapSpellCheck {
         /// <summary>
         /// A method used for simplifying the process of showing a message box that only has an OK button.
         /// </summary>
-        private static DialogResult ShowOKMessageBox(string message, string title, MessageBoxIcon icon) {
+        private static DialogResult ShowOKMessageBox(string message, string title, MessageBoxIcon icon)
+        {
             return MessageBox.Show(message, title, MessageBoxButtons.OK, icon, MessageBoxDefaultButton.Button1, 0);
         }
 
-        private static void ActivateArcMap() {
+        private static void ActivateArcMap()
+        {
             BringWindowToTop(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle);
         }
 
