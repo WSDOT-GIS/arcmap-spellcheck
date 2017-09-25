@@ -2,11 +2,11 @@
   <Name>Spell-Check</Name>
   <AddInID>{7d90a5f5-bfe3-483a-be83-21fa5be6f97d}</AddInID>
   <Description>Provides spell-check capability in ArcMap.</Description>
-  <Version>1.0</Version>
+  <Version>1.0.1</Version>
   <Image>Images\SpellCheckAddIn.png</Image>
   <Author>Jeff Jacobson</Author>
   <Company>WSDOT</Company>
-  <Date>9/5/2017</Date>
+  <Date>9/25/2017</Date>
   <Targets>
     <Target name="Desktop" version="10.5" />
   </Targets>

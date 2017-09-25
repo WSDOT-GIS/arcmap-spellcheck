@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using ESRI.ArcGIS.ArcMapUI;
+﻿using ESRI.ArcGIS.ArcMapUI;
 using ArcMapSpellCheck;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace SpellCheckAddIn
 {
@@ -15,14 +13,21 @@ namespace SpellCheckAddIn
 
         protected override void OnClick()
         {
-            //
-            //  TODO: Sample code showing how to access button host
-            //
-            ////ArcMap.Application.CurrentTool = null;
-            IMxDocument doc = ArcMap.Application.Document as IMxDocument;
-            using (var spellchecker = new Spellchecker())
+            // Check to see if Word is already opened.
+            var processes = Process.GetProcessesByName("WINWORD");
+
+            if (processes.Length > 0)
             {
-                spellchecker.CheckDocument(doc);
+                string message = "The spell check operation needs to use Microsoft Word, which is already opened. Please close Word and try again.";
+                MessageBox.Show(message, "Word is already open", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, 0);
+            }
+            else
+            {
+                IMxDocument doc = ArcMap.Application.Document as IMxDocument;
+                using (var spellchecker = new Spellchecker())
+                {
+                    spellchecker.CheckDocument(doc);
+                }
             }
         }
         protected override void OnUpdate()
