@@ -1,6 +1,8 @@
 Spell Check for ArcMap
 ======================
 
+**[Esri is deprecating ArcMap](https://support.esri.com/en/arcmap-esri-plan), so this project is no longer active**
+
 Requirements
 ------------
 
